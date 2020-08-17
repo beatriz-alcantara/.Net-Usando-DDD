@@ -6,10 +6,9 @@ Arquitetura para DDD
 - Loja
 - Pet
 - Cliente
-- Relacionamento
 
 ## Lista de Desenvolvimento
 
 - Criar mapeamento das tabelas :heavy_check_mark:
 - Estabelecer relacionamento entre Pet e Cliente :heavy_check_mark:
-- Configurar a tabela Relacionamento
+- Configurar Relacionamento :heavy_check_mark:
