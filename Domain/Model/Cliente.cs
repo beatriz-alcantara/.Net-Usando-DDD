@@ -8,5 +8,7 @@ namespace Domain.Model {
         public DateTime DataNascimento { get; set; }
         public char Sexo { get; set; }
         public ICollection<Pet> Pets { get; set; }
+        public Loja loja { get; set; }
+        public int LojaId { get; set; }
     }
 }

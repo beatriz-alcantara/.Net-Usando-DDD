@@ -1,11 +1,11 @@
-using Domain.Map;
 using Domain.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace Data {
     public class PetshopContext : DbContext {
-        public PetshopContext(DbContextOptions options) : base(options){}
+        public PetshopContext(DbContextOptions<PetshopContext> options) : base(options){}
 
+        public PetshopContext(){}
         public DbSet<Cliente> Clientes;
         public DbSet<Pet> Pets;
         public DbSet<Loja> Lojas;
@@ -17,6 +17,7 @@ namespace Data {
                 entidade.Property(l => l.Id).HasColumnName("Id").ValueGeneratedOnAdd();
                 entidade.Property(l => l.Nome).HasColumnName("Nome").HasMaxLength(80).IsRequired();
                 entidade.Property(l => l.Descricao).HasColumnName("Descricao").HasMaxLength(200);
+                entidade.HasMany<Cliente>(l => l.Clientes).WithOne(c => c.loja).HasForeignKey(c => c.LojaId);
             });
         }
 
@@ -28,7 +29,7 @@ namespace Data {
                 entidade.Property(p => p.Nome).HasColumnName("Nome").HasMaxLength(20).IsRequired();
                 entidade.Property(p => p.Raca).HasColumnName("Raca").HasMaxLength(20).IsRequired();
                 entidade.Property(p => p.Especie).HasColumnName("Especie").HasMaxLength(30).IsRequired();
-                entidade.HasOne<Cliente>(p => p.Cliete).WithMany(c => c.Pets).HasForeignKey(p => p.ClienteId);
+                entidade.HasOne<Cliente>(p => p.Cliente).WithMany(c => c.Pets).HasForeignKey(p => p.ClienteId);
             });
         }
 
@@ -41,8 +42,12 @@ namespace Data {
             });
         }
 
-        private void ConfigurarRelacionamento(ModelBuilder builder) {
-            builder.Entity<Relacionamento>(entidade => {});
+        protected override void OnModelCreating(ModelBuilder builder) {
+            builder.HasDefaultSchema("PetshopDB");
+            ConfigurarLoja(builder);
+            ConfigurarCliente(builder);
+            ConfigurarPet(builder);
+            base.OnModelCreating(builder);
         }
     }
 }
