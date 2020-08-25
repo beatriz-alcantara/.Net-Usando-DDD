@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Data;
+using Data.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,8 +28,10 @@ namespace Application
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<LojaRepository>();
+            services.AddTransient<ClienteRepository>();
             services.AddDbContext<PetshopContext>(options =>
-            options.UseMySQL("server=localhost;port=3306;database=ControlePetShops;uid=beatriz;password=xablau123", b => b.MigrationsAssembly("Data")));
+            options.UseMySQL("server=localhost;port=3306;database=PetshopDB;uid=beatriz;password=xablau123", b => b.MigrationsAssembly("Data")));
             services.AddControllers();
         }
 
