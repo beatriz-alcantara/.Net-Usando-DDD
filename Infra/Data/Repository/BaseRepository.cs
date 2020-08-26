@@ -14,14 +14,14 @@ namespace Data.Repository {
             context = ctx;
             entidade = context.Set<C>();
         }
-        public virtual Task<List<C>> ListarTodos() {
-            return entidade.ToListAsync();
+        public virtual List<C> ListarTodos() {
+            return entidade.ToListAsync().Result;
         }
         public void Salvar(C objeto) {
             entidade.Add(objeto);
             context.SaveChanges();
         }
-        public C ObterUm(int id) {
+        public virtual C ObterUm(int id) {
             return entidade.Find(id);
         }
         public void Atualizar(C objeto) {

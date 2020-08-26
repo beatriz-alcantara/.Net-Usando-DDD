@@ -17,6 +17,10 @@ namespace Application.Controllers {
         public IActionResult ListarTodos() {
             return Ok(repository.ListarTodos());
         }
+        [HttpGet("{id}")]
+        public IActionResult ObterUm(int id) {
+            return Ok(repository.ObterUm(id));
+        }
         [HttpPost]
         public IActionResult CadastrarCliente(Cliente cliente) {
             try {
@@ -28,10 +32,10 @@ namespace Application.Controllers {
             }
             
         }
-        [Route("listagem-relacionamento")]
-        [HttpGet]
-        public IActionResult ListagemRelacionamento() {
-            return Ok(repository.ListagemRelacionamentoLoja());
+        [HttpPut]
+        public IActionResult Atualizar (Cliente cliente) {
+            repository.Atualizar(cliente);
+            return Ok("Cliente atualizado com sucesso");
         }
     }
 }

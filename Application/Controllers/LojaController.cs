@@ -15,11 +15,20 @@ namespace Application.Controllers {
 
         [HttpGet]
         public IActionResult ListarTodos() {
-            return Ok(repository.ListarTodos().Result);
+            return Ok(repository.ListarTodos());
+        }
+        [HttpGet("{id}")]
+        public IActionResult ObterUm(int id) {
+            return Ok(repository.ObterUm(id));
         }
         [HttpPost]
         public IActionResult CadastrarLoja(Loja loja) {
             repository.Salvar(loja);
+            return Ok();
+        }
+        [HttpPut]
+        public IActionResult Atualizar(Loja loja) {
+            repository.Atualizar(loja);
             return Ok();
         }
     }
