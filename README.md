@@ -19,7 +19,9 @@ Arquitetura para DDD
 - Configurar Relacionamento :heavy_check_mark:
 - Criar CRUD simples :heavy_check_mark:
 - Criar Listagem Para trazer os dados com seus respectivos relacionamentos :heavy_check_mark:
-- Implementar o swagge :heavy_check_mark:
+- Implementar o swagger :heavy_check_mark:
+- Implementar uma classe para tratar erros
+- Implementar validação
 
 ## Configuração do Swagger
  - Instalar o pacote Swashbuckle.AspNetCore.
