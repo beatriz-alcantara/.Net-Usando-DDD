@@ -22,6 +22,7 @@ Arquitetura para DDD
 - Implementar o swagger :heavy_check_mark:
 - Implementar uma classe para tratar erros
 - Implementar validação
+- Gerar log
 
 ## Configuração do Swagger
  - Instalar o pacote Swashbuckle.AspNetCore.
