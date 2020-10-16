@@ -44,3 +44,8 @@ Arquitetura para DDD
             });
  }
  ```
+## Criar migrations pelo Visual Studio
+Add-migrations -project Data
+
+## Aplicar migrations pelo Visual Studio
+Update-Database -project Data
