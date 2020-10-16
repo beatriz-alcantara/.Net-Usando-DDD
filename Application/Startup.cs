@@ -32,7 +32,7 @@ namespace Application
             services.AddTransient<ClienteRepository>();
             services.AddTransient<PetRepository>();
             services.AddDbContext<PetshopContext>(options =>
-            options.UseMySQL("server=localhost;port=3306;database=PetshopDB;uid=beatriz;password=xablau123", b => b.MigrationsAssembly("Data")));
+            options.UseMySQL($"Server={Configuration["ConnectionString:Server"]};Port={Configuration["ConnectionString:Port"]};Database={Configuration["ConnectionString:Database"]};Uid={Configuration["ConnectionString:Uid"]};Password={Configuration["ConnectionString:Password"]}", b => b.MigrationsAssembly("Data")));
             services.AddSwaggerGen();
             services.AddControllers();
         }
