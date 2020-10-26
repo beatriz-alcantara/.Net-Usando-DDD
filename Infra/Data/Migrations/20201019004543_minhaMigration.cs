@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using MySql.Data.EntityFrameworkCore.Metadata;
 
-namespace Application.Migrations
+namespace Data.Migrations
 {
-    public partial class Criando_DB_Tabelas : Migration
+    public partial class minhaMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

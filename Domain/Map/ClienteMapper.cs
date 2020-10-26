@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Domain.Enums;
 using Domain.Model;
 
 namespace Domain.Map {
@@ -7,7 +8,7 @@ namespace Domain.Map {
         public int Id { get; set; }
         public string Nome { get; set; }
         public DateTime DataNascimento { get; set; }
-        public char Sexo { get; set; }
-        public ICollection<Pet> Pets { get; set; }
+        public SexoEnum Sexo { get; set; }
+        //public ICollection<Pet> Pets { get; set; }
     }
 }

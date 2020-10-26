@@ -2,34 +2,33 @@ using Data;
 using Data.Repository;
 using Domain.Model;
 using Microsoft.AspNetCore.Mvc;
+using Service;
 
 namespace Application.Controllers {
     [Route("api/v1/loja")]
     [ApiController]
     public class LojaController : ControllerBase {
-        private readonly LojaRepository repository;
+        private readonly LojaService lojaService;
         public LojaController(LojaRepository rp)
         {
-            repository = rp;
+            lojaService = new LojaService(rp);
         }
 
         [HttpGet]
         public IActionResult ListarTodos() {
-            return Ok(repository.ListarTodos());
+            return Ok(lojaService.ListarTodos());
         }
         [HttpGet("{id}")]
         public IActionResult ObterUm(int id) {
-            return Ok(repository.ObterUm(id));
+            return Ok(lojaService.ObterUm(id));
         }
         [HttpPost]
         public IActionResult CadastrarLoja(Loja loja) {
-            repository.Salvar(loja);
-            return Ok();
+            return Ok(lojaService.CadastrarLoja(loja));
         }
         [HttpPut]
         public IActionResult Atualizar(Loja loja) {
-            repository.Atualizar(loja);
-            return Ok();
+            return Ok(lojaService.Atualizar(loja));
         }
     }
 }

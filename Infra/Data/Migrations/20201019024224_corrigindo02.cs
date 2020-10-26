@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Application.Migrations
+namespace Data.Migrations
 {
-    public partial class migrationVS : Migration
+    public partial class corrigindo02 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

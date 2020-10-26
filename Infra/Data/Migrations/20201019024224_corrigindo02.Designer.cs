@@ -6,18 +6,18 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Application.Migrations
+namespace Data.Migrations
 {
     [DbContext(typeof(PetshopContext))]
-    [Migration("20201016002445_migrationVS")]
-    partial class migrationVS
+    [Migration("20201019024224_corrigindo02")]
+    partial class corrigindo02
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasDefaultSchema("PetshopDB")
-                .HasAnnotation("ProductVersion", "3.1.7")
+                .HasAnnotation("ProductVersion", "3.1.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Domain.Model.Cliente", b =>
@@ -32,6 +32,7 @@ namespace Application.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<int>("LojaId")
+                        .HasColumnName("LojaId")
                         .HasColumnType("int");
 
                     b.Property<string>("Nome")
@@ -83,6 +84,7 @@ namespace Application.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("ClienteId")
+                        .HasColumnName("ClienteId")
                         .HasColumnType("int");
 
                     b.Property<string>("Especie")

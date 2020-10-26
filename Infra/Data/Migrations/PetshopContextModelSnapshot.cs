@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Application.Migrations
+namespace Data.Migrations
 {
     [DbContext(typeof(PetshopContext))]
     partial class PetshopContextModelSnapshot : ModelSnapshot
@@ -15,7 +15,7 @@ namespace Application.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasDefaultSchema("PetshopDB")
-                .HasAnnotation("ProductVersion", "3.1.7")
+                .HasAnnotation("ProductVersion", "3.1.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Domain.Model.Cliente", b =>
@@ -30,6 +30,7 @@ namespace Application.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<int>("LojaId")
+                        .HasColumnName("LojaId")
                         .HasColumnType("int");
 
                     b.Property<string>("Nome")
@@ -81,6 +82,7 @@ namespace Application.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("ClienteId")
+                        .HasColumnName("ClienteId")
                         .HasColumnType("int");
 
                     b.Property<string>("Especie")

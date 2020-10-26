@@ -1,5 +1,10 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
 using Data.Repository;
+using Domain.Enums;
+using Domain.Map;
 using Domain.Model;
 using Microsoft.AspNetCore.Mvc;
 using Service;
@@ -9,14 +14,17 @@ namespace Application.Controllers {
     [Route("api/v1/cliente")]
     public class ClienteController : ControllerBase {
         private readonly ClienteService service;
-        public ClienteController(ClienteRepository repo)
+        private readonly IMapper mapper;
+        public ClienteController(ClienteRepository repo, IMapper _mapper)
         {
             service = new ClienteService(repo);
+            mapper = _mapper;
         }
 
         [HttpGet]
         public IActionResult ListarTodos() {
-            return Ok(service.ListarTodos());
+            var result = mapper.Map<List<Cliente>, List<ClienteMapper>>(service.ListarTodos());
+            return Ok(result);
         }
         [HttpGet("{id}")]
         public IActionResult ObterUm(int id) {
