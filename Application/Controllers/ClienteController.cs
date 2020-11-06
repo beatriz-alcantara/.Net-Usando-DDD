@@ -26,10 +26,12 @@ namespace Application.Controllers {
             var result = mapper.Map<List<Cliente>, List<ClienteMapper>>(service.ListarTodos());
             return Ok(result);
         }
+
         [HttpGet("{id}")]
         public IActionResult ObterUm(int id) {
             return Ok(service.ObterUm(id));
         }
+
         [HttpPost]
         public IActionResult CadastrarCliente(Cliente cliente) {
             try {
@@ -42,6 +44,12 @@ namespace Application.Controllers {
         [HttpPut]
         public IActionResult Atualizar (Cliente cliente) {
             return Ok(service.Atualizar(cliente));
+        }
+        [HttpGet("pets/{idCliente}")]
+        public IActionResult ListarPets(int idCliente)
+        {
+            var result = mapper.Map<List<Pet>, List<PetMapper>>(service.ListarPets(idCliente));
+            return Ok(result);
         }
     }
 }

@@ -9,7 +9,8 @@ namespace Data {
         public DbSet<Cliente> Clientes;
         public DbSet<Pet> Pets;
         public DbSet<Loja> Lojas;
-        
+        public DbSet<Veterinario> Veterinarios;
+
         private void ConfigurarLoja (ModelBuilder builder) {
             builder.Entity<Loja>(entidade => {
                 entidade.ToTable("Loja");
@@ -44,11 +45,26 @@ namespace Data {
             });
         }
 
+        private void ConfigurarVeterinario(ModelBuilder builder)
+        {
+            builder.Entity<Veterinario>(entidade =>
+            {
+                entidade.HasKey(v => v.Id);
+                entidade.Property(v => v.Id).HasColumnName("Id").ValueGeneratedOnAdd();
+                entidade.Property(v => v.Nome).HasColumnName("Nome").HasMaxLength(60).IsRequired();
+                entidade.Property(v => v.Formacao).HasColumnName("Formacao").HasMaxLength(100).IsRequired();
+                entidade.Property(v => v.Descricao).HasColumnName("Descricao").HasMaxLength(150).IsRequired();
+                entidade.Property(v => v.Atendimentos).HasColumnName("Atendimentos").HasDefaultValue(0);
+                entidade.Property(v => v.Satisfacao).HasDefaultValue(0f);
+            });
+        }
+
         protected override void OnModelCreating(ModelBuilder builder) {
             builder.HasDefaultSchema("PetshopDB");
             ConfigurarLoja(builder);
             ConfigurarCliente(builder);
             ConfigurarPet(builder);
+            ConfigurarVeterinario(builder);
             base.OnModelCreating(builder);
         }
     }

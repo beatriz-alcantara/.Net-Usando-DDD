@@ -14,7 +14,7 @@ namespace Data.Repository
                             Nome = pet.Nome,
                             Raca = pet.Raca,
                             Especie = pet.Especie,
-                            Cliente = cliente
+                            ClienteId = pet.ClienteId
                         };
             return pets.ToList();
         }

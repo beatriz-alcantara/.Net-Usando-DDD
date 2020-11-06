@@ -10,25 +10,22 @@ namespace Data.Repository {
                         select new Loja {
                             Id = l.Id,
                             Nome = l.Nome,
-                            Descricao = l.Descricao,
-                            Clientes = (from cliente in context.Set<Cliente>()
-                                    where cliente.LojaId == l.Id
-                                    select new Cliente {
-                                        Id = cliente.Id,
-                                        Nome = cliente.Nome,
-                                        DataNascimento = cliente.DataNascimento,
-                                        Sexo = cliente.Sexo,
-                                        Pets = (from pet in context.Set<Pet>()
-                                                where pet.ClienteId == cliente.Id
-                                                select new Pet {
-                                                    Id = pet.Id,
-                                                    Nome = pet.Nome,
-                                                    Raca = pet.Raca,
-                                                    Especie = pet.Especie
-                                                }).ToList()
-                                    }).ToList()
+                            Descricao = l.Descricao
                         };      
             return lojas.ToList();
+        }
+        public List<Cliente> ListarClientes(int lojaId)
+        {
+            var clientes = from cliente in context.Set<Cliente>()
+                           select new Cliente
+                           {
+                               Id = cliente.Id,
+                               DataNascimento = cliente.DataNascimento,
+                               LojaId = cliente.LojaId,
+                               Nome = cliente.Nome,
+                               Sexo = cliente.Sexo
+                           };
+            return clientes.ToList();
         }
     }
 }

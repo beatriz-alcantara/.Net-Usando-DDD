@@ -55,5 +55,9 @@ namespace Service
             }
         }
 
+        public List<Cliente> ListarClientes(int lojaId)
+        {
+            return repository.ListarClientes(lojaId);
+        }
     }
 }

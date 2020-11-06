@@ -1,0 +1,3 @@
+    FROM mysql
+    ENV MYSQL_USER=beatriz MYSQL_PASSWORD=xablau123 MYSQL_ROOT_PASSWORD=xablau123
+    EXPOSE ${PORT}

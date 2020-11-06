@@ -34,6 +34,7 @@ namespace Application
             services.AddTransient<LojaRepository>();
             services.AddTransient<ClienteRepository>();
             services.AddTransient<PetRepository>();
+            services.AddTransient<VeterinarioRepository>();
             services.AddDbContext<PetshopContext>(options =>
             options.UseMySQL($"Server={Configuration["ConnectionString:Server"]};Port={Configuration["ConnectionString:Port"]};Database={Configuration["ConnectionString:Database"]};Uid={Configuration["ConnectionString:Uid"]};Password={Configuration["ConnectionString:Password"]}", b => b.MigrationsAssembly("Data")));
             services.AddSwaggerGen();

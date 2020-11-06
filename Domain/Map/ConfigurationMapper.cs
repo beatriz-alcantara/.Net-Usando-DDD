@@ -13,6 +13,8 @@ namespace Domain.Map
         public ConfigurationMapper()
         {
             CreateMap<Cliente, ClienteMapper>();
+            CreateMap<Pet, PetMapper>();
+            CreateMap<Loja, LojaMapper>();
         }
     }
 }

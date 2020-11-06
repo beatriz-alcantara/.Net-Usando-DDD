@@ -34,8 +34,19 @@ namespace Service
             }
         }
         public string Atualizar (Cliente cliente) {
-            repository.Atualizar(cliente);
-            return "Cliente atualizado com sucesso";
+            try
+            {
+                validator.ValidateAndThrow(cliente);
+                repository.Atualizar(cliente);
+                return "Cliente atualizado com sucesso";
+            } catch (ValidationException er)
+            {
+                return er.Message;
+            }
+        }
+        public List<Pet> ListarPets(int idCliente)
+        {
+            return repository.ListarPets(idCliente);
         }
     }
 }

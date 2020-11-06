@@ -10,7 +10,6 @@ namespace Domain.Validators {
             RuleFor(cliente => cliente.Nome).NotEmpty().MaximumLength(60);
             RuleFor(cliente => cliente.DataNascimento).NotNull();
             RuleFor(cliente => cliente.LojaId).NotEmpty().NotNull();
-            RuleFor(cliente => cliente.Pets).NotEmpty();
         }
     }
 }

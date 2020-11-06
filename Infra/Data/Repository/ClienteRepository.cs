@@ -17,15 +17,7 @@ namespace Data.Repository {
                          Nome = cliente.Nome,
                          DataNascimento = cliente.DataNascimento,
                          Sexo = cliente.Sexo,
-                         loja = loj,
-                         Pets = (from pet in context.Set<Pet>()
-                         where cliente.Id== pet.ClienteId
-                         select new Pet{
-                             Id = pet.Id,
-                             Nome = pet.Nome,
-                             Raca = pet.Raca,
-                             Especie = pet.Especie
-                         }).ToList()
+                         LojaId = cliente.LojaId                   
                      };
             return gp.ToList();
         }
@@ -50,6 +42,20 @@ namespace Data.Repository {
             cliente.loja = lojas.First();
             cliente.Pets = pets.ToList();
             return cliente;
+        }
+        public List<Pet> ListarPets(int idCliente)
+        {
+            var pets = from pet in context.Set<Pet>()
+                       where pet.ClienteId == idCliente
+                       select new Pet
+                       {
+                           Id = pet.Id,
+                           ClienteId = pet.ClienteId,
+                           Especie = pet.Especie,
+                           Raca = pet.Raca,
+                           Nome = pet.Nome
+                       };
+            return pets.ToList();
         }
     }
 }
